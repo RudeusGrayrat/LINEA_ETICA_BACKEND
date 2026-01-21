@@ -1,8 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 // const cors = requiequire("socket.io"); // Importar socket.io
-const dotenv = require("dotenv");
-dotenv.config();
+
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 // const fileUpload = require("express-fileupload"); //permite subir archivos al servidor

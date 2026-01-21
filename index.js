@@ -1,4 +1,5 @@
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 const { PORT } = process.env;
 const { httpServer } = require("./src/app"); // Importar el servidor con Socket.IO integrado
 const connectDB = require("./src/dbConnection");
