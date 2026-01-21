@@ -45,7 +45,6 @@ app.use((req, res, next) => {
         return next();
     }
 
-    return tokenVerify(req, res, next);
 });
 
 app.use(cookieParser());
