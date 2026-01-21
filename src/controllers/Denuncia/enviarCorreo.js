@@ -52,7 +52,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
         <!-- ICONO -->
         <tr>
           <td align="center" style="padding:30px 20px 10px;">
-            <img src="https://${FRONTEND_URL}/ESCUDO_CHECK.png" width="80" alt="Seguridad" style="display:block;" />
+            <img src="${FRONTEND_URL}/ESCUDO_CHECK.png" width="80" alt="Seguridad" style="display:block;" />
           </td>
         </tr>
 
@@ -169,7 +169,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
           
            <tr>
             <td align="center" style="padding:30px 20px 10px;">
-              <img src="https://${FRONTEND_URL}/ESCUDO_ADVERTENCIA.png" width="80" alt="Seguridad"
+              <img src="${FRONTEND_URL}/ESCUDO_ADVERTENCIA.png" width="80" alt="Seguridad"
                 style="display:block;" />
             </td>
           </tr>
