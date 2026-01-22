@@ -89,7 +89,7 @@ const postDenuncia = async (req, res) => {
         }
 
         //enviar por correo al jefe predeterminado
-        await enviarCorreo("sistemas1@ladiamb.com.pe", denuncia, usuario, "ADMIN")
+        await enviarCorreo("msencebe@towerandtower.com.pe", denuncia, usuario, "ADMIN")
 
         res.status(201).json({
             message: `Denuncia creada exitosamente${anonimo ? ' de forma anónima.' : '.'}`,
