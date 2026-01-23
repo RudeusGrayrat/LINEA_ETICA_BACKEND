@@ -350,7 +350,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
     const imagenEnviar = tipo === "ADMIN" ? "ESCUDO_ADVERTENCIA.png" : "ESCUDO_CHECK.png";
     const nombreEscudo = tipo === "ADMIN" ? "escudoAdvertencia" : "escudoCheck";
     const mailOptions = {
-      from: "Línea Ética - Tower and Tower",
+      from: `Línea Ética - Tower and Tower <${EMAIL_TOWERANDTOWER}>`,
       to: correoDestino,
       subject: `Denuncia recibida - Código ${safe(codigoDenuncia)} `,
       text: `Denuncia recibida correctamente.`.trim(),
