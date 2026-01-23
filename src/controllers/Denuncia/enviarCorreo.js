@@ -145,8 +145,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
     `;
   }
   if (tipo === "ADMIN") {
-    if (anonimo) {
-      mensaje_enviar = `
+    mensaje_enviar = `
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -247,7 +246,6 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
 </body>
 </html>
   `;
-    }
   }
 
   if (!EMAIL_TOWERANDTOWER || !PASS_TOWERANDTOWER || !SMTP_TOWERANDTOWER) {
@@ -270,23 +268,19 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
       tls: { rejectUnauthorized: false }
     });
 
-
+    const imagenEnviar = tipo === "ADMIN" ? "ESCUDO_ADVERTENCIA.png" : "ESCUDO_CHECK.png";
+    const nombreEscudo = tipo === "ADMIN" ? "escudoAdvertencia" : "escudoCheck";
     const mailOptions = {
-      from: `"Línea Ética - Tower and Tower" < ${EMAIL_TOWERANDTOWER}> `,
+      from: `"Línea Ética - Tower and Tower" <${EMAIL_TOWERANDTOWER}> `,
       to: correoDestino,
       subject: `Denuncia recibida - Código ${safe(codigoDenuncia)} `,
       text: `Denuncia recibida correctamente.`.trim(),
       html: mensaje_enviar,
       attachments: [
         {
-          filename: "ESCUDO_ADVERTENCIA.png",
-          path: `${FRONTEND_URL}/ESCUDO_ADVERTENCIA.png`,
-          cid: "escudoAdvertencia"
-        },
-        {
-          filename: "ESCUDO_CHECK.png",
-          path: `/home/miguelnc/apps/LINEA_ETICA/frontend/public/ESCUDO_CHECK.png`,
-          cid: "escudoCheck"
+          filename: imagenEnviar,
+          path: `${FRONTEND_URL}/${imagenEnviar}`,
+          cid: nombreEscudo
         }
       ]
     };
