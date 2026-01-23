@@ -252,15 +252,15 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
                       {${anonimo ? '' : `
                       <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Cargo:</td>
-                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.cargo)}</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(cargo)}</td>
                       </tr>
                       <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Teléfono:</td>
-                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.telefono)}</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(telefono)}</td>
                       </tr>
                       <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Correo:</td>
-                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.correo)}</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(correo)}</td>
                       </tr>
                       `}
                       <tr>
@@ -337,20 +337,19 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
     const transporter = nodemailer.createTransport({
       host: SMTP_TOWERANDTOWER,
       port: PORT,
-      secure: false,
+      secure: true,
       auth: {
         user: EMAIL_TOWERANDTOWER,
         pass: PASS_TOWERANDTOWER,
       },
       connectionTimeout: 5000,
       sendTimeout: 10000,
-      tls: { rejectUnauthorized: false }
     });
 
     const imagenEnviar = tipo === "ADMIN" ? "ESCUDO_ADVERTENCIA.png" : "ESCUDO_CHECK.png";
     const nombreEscudo = tipo === "ADMIN" ? "escudoAdvertencia" : "escudoCheck";
     const mailOptions = {
-      from: `Línea Ética - Tower and Tower <${EMAIL_TOWERANDTOWER}>`,
+      from: `Línea Ética - Tower and Tower <${EMAIL_LINEAETICA}>`,
       to: correoDestino,
       subject: `Denuncia recibida - Código ${safe(codigoDenuncia)} `,
       text: `Denuncia recibida correctamente.`.trim(),
