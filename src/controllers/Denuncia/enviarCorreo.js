@@ -37,112 +37,156 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
 
   if (tipo === "DENUNCIANTE") {
     mensaje_enviar = `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
-<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#ffffff;font-family:Arial,Helvetica,sans-serif;">
 
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;">
-  <tr>
-    <td align="center" style="padding:40px 0;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+    <tr>
+      <td align="center" style="padding:40px 10px;">
 
-      <!-- CONTENEDOR PRINCIPAL -->
-      <table width="600" cellpadding="0" cellspacing="0"
-        style="background:#f2f2f2;border-radius:16px;box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+        <table width="600" cellpadding="0" cellspacing="0" border="0" style="
+          background-color:#f9f9f9;
+          border-radius:16px;
+          border:1px solid #dddddd;
+          box-shadow:0 4px 12px rgba(0,0,0,0.1);
+          border-collapse:separate;
+        ">
 
-        <!-- ICONO -->
-        <tr>
-          <td align="center" style="padding:30px 20px 10px;">
-            <img src="cid:escudoCheck" width="80" alt="Seguridad" style="display:block;" />
-          </td>
-        </tr>
+          <!-- ICONO -->
+          <tr>
+            <td align="center" style="padding:30px 20px 10px;">
+              <img src="cid:escudoCheck" width="80" alt="Confirmación"
+                style="display:block;" />
+            </td>
+          </tr>
 
-        <!-- TITULO -->
-        <tr>
-          <td align="center" style="padding:10px 20px;">
-            <h1 style="margin:0;font-size:28px;color:#333;">
-              DENUNCIA ENTREGADA
-            </h1>
-          </td>
-        </tr>
+          <!-- TÍTULO -->
+          <tr>
+            <td align="center" style="padding:10px 20px;">
+              <h1 style="margin:0;font-size:28px;color:#00a600;">
+                DENUNCIA ENTREGADA
+              </h1>
+            </td>
+          </tr>
 
-        <!-- TARJETA BLANCA -->
-        <tr>
-          <td style="padding:20px;">
-            <table width="100%" cellpadding="0" cellspacing="0"
-              style="background:#ffffff;border-radius:14px;padding:25px;">
+          <!-- CONTENIDO -->
+          <tr>
+            <td style="padding:20px 30px 30px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="
+                background-color:#ffffff;
+                border-radius:14px;
+                border:1px solid #eeeeee;
+                border-collapse:separate;
+              ">
+                <tr>
+                  <td style="padding:30px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
 
-              <!-- HEADER -->
-              <tr>
-                <th colspan="2"
-                  style="
-                    padding-bottom:16px;
-                    font-size:18px;
-                    font-weight:600;
-                    color:#155e75;
-                    text-align:left;
-                  ">
-                  Detalles Principales
-                </th>
-              </tr>
+                      <tr>
+                        <td colspan="2" style="
+                          padding-bottom:20px;
+                          font-size:18px;
+                          font-weight:bold;
+                          color:#155e75;
+                          border-bottom:2px solid #155e75;
+                        ">
+                          Detalles Principales
+                        </td>
+                      </tr>
 
-              <!-- ROWS -->
-              <tr>
-                <td style="padding:8px 0;font-weight:500;color:#333;">
-                  Denunciante:
-                </td>
-                <td style="padding:8px 0;color:#333;">
-                  ${anonimo ? "ANÓNIMO" : safe(nombres + " " + apellidos)}
-                </td>
-              </tr>
+                      <tr>
+                        <td width="40%" style="
+                          padding:15px 0;
+                          border-bottom:1px solid #f0f0f0;
+                          font-size:14px;
+                          font-weight:bold;
+                          color:#666666;
+                        ">
+                          Denunciante:
+                        </td>
+                        <td width="60%" style="
+                          padding:15px 0;
+                          border-bottom:1px solid #f0f0f0;
+                          font-size:14px;
+                          color:#333333;
+                        ">
+                          ${anonimo ? "ANÓNIMO" : safe(nombres + " " + apellidos)}
+                        </td>
+                      </tr>
 
-              <tr>
-                <td style="padding:8px 0;font-weight:500;color:#333;">
-                  Categoría:
-                </td>
-                <td style="padding:8px 0;color:#333;">
-                  ${safe(categoriaDenuncia)}
-                </td>
-              </tr>
+                      <tr>
+                        <td style="
+                          padding:15px 0;
+                          border-bottom:1px solid #f0f0f0;
+                          font-size:14px;
+                          font-weight:bold;
+                          color:#666666;
+                        ">
+                          Categoría:
+                        </td>
+                        <td style="
+                          padding:15px 0;
+                          border-bottom:1px solid #f0f0f0;
+                          font-size:14px;
+                          color:#333333;
+                        ">
+                          ${safe(categoriaDenuncia)}
+                        </td>
+                      </tr>
 
-              <tr>
-                <td style="padding:8px 0;font-weight:500;color:#333;">
-                  Relación con la compañía:
-                </td>
-                <td style="padding:8px 0;color:#333;">
-                  ${safe(denunciante?.relacionCompania)}
-                </td>
-              </tr>
+                      <tr>
+                        <td style="
+                          padding:15px 0;
+                          font-size:14px;
+                          font-weight:bold;
+                          color:#666666;
+                        ">
+                          Relación con la compañía:
+                        </td>
+                        <td style="
+                          padding:15px 0;
+                          font-size:14px;
+                          color:#333333;
+                        ">
+                          ${safe(denunciante?.relacionCompania)}
+                        </td>
+                      </tr>
 
-            </table>
-          </td>
-        </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-        <!-- FOOTER -->
-        <tr>
-          <td align="center"
-            style="
-              background:#ffffff;
-              border-radius:0 0 16px 16px;
-              padding:18px;
+          <!-- FOOTER -->
+          <tr>
+            <td align="center" style="
+              padding:20px;
               font-size:12px;
-              color:#666;
-              line-height:1.4;
+              color:#888888;
+              background-color:#f2f2f2;
+              border-radius:0 0 16px 16px;
             ">
-            Canal de Denuncias Seguro<br />
-            © ${añoActual} Tower and Tower. Todos los derechos reservados.
-          </td>
-        </tr>
+              Canal de Denuncias Seguro<br />
+              © ${añoActual} Tower and Tower. Todos los derechos reservados.
+            </td>
+          </tr>
 
-      </table>
+        </table>
 
-    </td>
-  </tr>
-</table>
+      </td>
+    </tr>
+  </table>
 
 </body>
 </html>
-
-    `;
+`;
   }
   if (tipo === "ADMIN") {
     mensaje_enviar = `
@@ -192,29 +236,64 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
                 <tr>
                   <td style="padding: 30px;"> <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td colspan="2" style="padding-bottom:20px; font-size:18px; font-weight:bold; color:#155e75; border-bottom: 2px solid #155e75;">
+                        <td colspan="2" style="padding-bottom:15px; font-size:18px; font-weight:bold; color:#155e75; border-bottom: 2px solid #155e75;">
                           Detalles de la denuncia
                         </td>
                       </tr>
 
                       <tr>
-                        <td width="40%" style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Denunciante:</td>
-                        <td width="60%" style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${anonimo ? "ANÓNIMO" : safe(nombres + " " + apellidos)}</td>
+                        <td width="40%" style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Denunciante:</td>
+                        <td width="60%" style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${anonimo ? "ANÓNIMO" : safe(nombres + " " + apellidos)}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Categoría:</td>
-                        <td style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(categoriaDenuncia)}</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Relación con la compañía:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.relacionCompania)}</td>
+                      </tr>
+                      {${anonimo ? '' : `
+                      <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Cargo:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.cargo)}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Lugar:</td>
-                        <td style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(lugarHechos)}</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Teléfono:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.telefono)}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Descripción:</td>
-                        <td style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333; line-height: 1.5;">${safe(descripcionHechos)}</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Correo:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.correo)}</td>
+                      </tr>
+                      `}
+                      <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Categoría:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(categoriaDenuncia)}</td>
                       </tr>
                       <tr>
-						  <td style="padding: 15px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Involucrados:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(involucrados)}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Lugar:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(lugarHechos)}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Fecha de los hechos:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(fechaHechos)}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Descripción:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333; line-height: 1.5;">${safe(descripcionHechos)}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Sede:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(sede)}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Área:</td>
+                        <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(area)}</td>
+                      </tr>
+
+                      <tr>
+						  <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">
 						  	Archivo
 						  </td>
                         <td style="padding: 20px 0 0;" colspan="2">
@@ -271,7 +350,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
     const imagenEnviar = tipo === "ADMIN" ? "ESCUDO_ADVERTENCIA.png" : "ESCUDO_CHECK.png";
     const nombreEscudo = tipo === "ADMIN" ? "escudoAdvertencia" : "escudoCheck";
     const mailOptions = {
-      from: `"Línea Ética - Tower and Tower" <${EMAIL_TOWERANDTOWER}> `,
+      from: "Línea Ética - Tower and Tower",
       to: correoDestino,
       subject: `Denuncia recibida - Código ${safe(codigoDenuncia)} `,
       text: `Denuncia recibida correctamente.`.trim(),
