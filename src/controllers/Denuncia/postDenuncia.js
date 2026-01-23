@@ -4,7 +4,7 @@ const generarCorrelativa = require("./correlativa");
 const enviarCorreo = require("./enviarCorreo");
 const fs = require("fs");
 const path = require("path");
-
+const { FRONTEND_URL } = process.env;
 const postDenuncia = async (req, res) => {
     try {
         const { fieldname, originalname,
@@ -32,7 +32,6 @@ const postDenuncia = async (req, res) => {
 
         let usuario = null
         let denuncia = null
-
 
         if (!relacionCompania || !categoriaDenuncia || !pais || !sede || !area || !involucrados || !lugarHechos || !descripcionHechos || !fechaHechos) {
             return res.status(400).json({ message: "Faltan datos obligatorios para crear la denuncia.", type: "Error" });
