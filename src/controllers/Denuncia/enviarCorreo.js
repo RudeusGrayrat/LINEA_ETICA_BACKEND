@@ -349,7 +349,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
     const imagenEnviar = tipo === "ADMIN" ? "ESCUDO_ADVERTENCIA.png" : "ESCUDO_CHECK.png";
     const nombreEscudo = tipo === "ADMIN" ? "escudoAdvertencia" : "escudoCheck";
     const mailOptions = {
-      from: `Línea Ética - Tower and Tower <${EMAIL_LINEAETICA}>`,
+      from: `Línea Ética - Tower and Tower <${EMAIL_TOWERANDTOWER}>`,
       to: correoDestino,
       subject: `Denuncia recibida - Código ${safe(codigoDenuncia)} `,
       text: `Denuncia recibida correctamente.`.trim(),
@@ -372,7 +372,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
 
   } catch (error) {
     console.error("Error al enviar el correo:", error);
-    throw new Error("No se pudo enviar el correo");
+    throw new Error(error || "No se pudo enviar el correo");
   }
 };
 
