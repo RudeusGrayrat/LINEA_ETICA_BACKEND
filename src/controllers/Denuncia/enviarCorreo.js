@@ -52,7 +52,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
         <!-- ICONO -->
         <tr>
           <td align="center" style="padding:30px 20px 10px;">
-            <img src="${FRONTEND_URL}/ESCUDO_CHECK.png" width="80" alt="Seguridad" style="display:block;" />
+            <img src="cid:escudoCheck" width="80" alt="Seguridad" style="display:block;" />
           </td>
         </tr>
 
@@ -169,7 +169,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
           
            <tr>
             <td align="center" style="padding:30px 20px 10px;">
-              <img src="${FRONTEND_URL}/ESCUDO_ADVERTENCIA.png" width="80" alt="Seguridad"
+              <img src="cid:escudoAdvertencia" width="80" alt="Seguridad"
                 style="display:block;" />
             </td>
           </tr>
@@ -277,13 +277,18 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
       subject: `Denuncia recibida - Código ${safe(codigoDenuncia)} `,
       text: `Denuncia recibida correctamente.`.trim(),
       html: mensaje_enviar,
-      // attachments: [
-      //   {
-      //     filename: "Boleta de Pago.pdf",
-      //     content: pdf,
-      //     encoding: "base64",
-      //   },
-      // ],
+      attachments: [
+        {
+          filename: "ESCUDO_ADVERTENCIA.png",
+          path: `${FRONTEND_URL}/ESCUDO_ADVERTENCIA.png`,
+          cid: "escudoAdvertencia"
+        },
+        {
+          filename: "ESCUDO_CHECK.png",
+          path: `/home/miguelnc/apps/LINEA_ETICA/frontend/public/ESCUDO_CHECK.png`,
+          cid: "escudoCheck"
+        }
+      ]
     };
 
     await transporter.sendMail(mailOptions);
