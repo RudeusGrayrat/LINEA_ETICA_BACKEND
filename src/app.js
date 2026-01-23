@@ -1,8 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
 // const cors = requiequire("socket.io"); // Importar socket.io
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
 // const fileUpload = require("express-fileupload"); //permite subir archivos al servidor
 const http = require("http"); // Importar http para usarlo con Socket.IO
 const router = require("./routes");
@@ -18,7 +16,6 @@ const app = express();
 // Configuración de CORS para Express
 // app.use(fileUpload());
 app.use(morgan("dev"));
-app.use(bodyParser.json());
 
 // Middleware de CORS
 app.use((req, res, next) => {
@@ -35,17 +32,16 @@ app.use((req, res, next) => {
             "Content-Type, Authorization"
         );
         res.setHeader("Access-Control-Allow-Credentials", "true");
-
-        if (req.method === "OPTIONS") {
-            return res.sendStatus(200);
-        }
-
-        return next();
     }
 
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+    }
+
+    next(); // ← SIEMPRE
 });
 
-app.use(cookieParser());
+
 app.use(express.json());
 app.use("/api", router);
 

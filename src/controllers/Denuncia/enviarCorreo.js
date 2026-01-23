@@ -219,7 +219,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
 						  	Archivo
 						  </td>
                         <td style="padding: 20px 0 0;" colspan="2">
-                          ${archivo ? `
+                          ${archivo?.url ? `
                             <a href="${archivo?.url}" style="display:inline-block; padding:12px 25px; background-color:#203a53; color:#ffffff; text-decoration:none; border-radius:8px; font-weight:bold; font-size:14px;">
                               Ver archivo adjunto
                             </a>` : '<span style="color:#999; font-size:13px; font-style:italic;">No hay archivo adjunto</span>'}
