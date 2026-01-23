@@ -249,7 +249,7 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
                         <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Relación con la compañía:</td>
                         <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(denunciante?.relacionCompania)}</td>
                       </tr>
-                      {${anonimo ? '' : `
+                      ${anonimo ? '' : `
                       <tr>
                         <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; font-weight:bold; color:#666;">Cargo:</td>
                         <td style="padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size:14px; color:#333;">${safe(cargo)}</td>
