@@ -355,6 +355,11 @@ const enviarCorreo = async (correoDestino, denuncia, usuario, tipoCorreo) => {
       subject: `Denuncia recibida - Código ${safe(codigoDenuncia)} `,
       text: `Denuncia recibida correctamente.`.trim(),
       html: mensaje_enviar,
+      headers: {
+        'X-Priority': '1',
+        'X-MSMail-Priority': 'High',
+        'Importance': 'High'
+      },
       attachments: [
         {
           filename: imagenEnviar,
